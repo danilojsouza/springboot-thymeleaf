@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<!-- HEADER/CABEÇALHO -->
+	<nav class="navbar navbar-inverse navbar-static-top"
+		th:fragment="header">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toogle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">DaniloJSouza - SpringBoot</a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Início</a></li>
+					<li><a href="/instituicoes/index">Instituições</a></li>
+					<li><a href="/alunos/index">Alunos</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- FOOTER -->
+	<div th:fragment="footer" style="text-align: center">
+		<p/>&copy; 2020 DaniloJSouza<p/>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Inserir Instituição</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos::header"></div>
+
+	<div class="container">
+		<h2>Inserir nova instituição</h2>
+		<form class="form-horizontal" action="/instituicoes/inserir"
+			method="POST" th:object="${instituicao}">
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="txt-nome">Nome da instituição</label>
+					<input type="text" class="form-control" id="txt-nome" th:field="*{nome}"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="txt-endereco">Endereço da instituição</label> <input
+						type="text" class="form-control" id="txt-endereco"
+						th:field="*{endereco}" />
+				</div>
+			</div>
+			<input type="submit" class="btn btn-default" value="Inserir" />
+		</form>
+	</div>
+	<div th:replace="fragmentos/fragmentos::footer"></div>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+</html>

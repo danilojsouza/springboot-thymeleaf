@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>SpringBoot com Thymeleaf</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos :: header"></div>
+	<div class="container">
+		<h2 align="center">Gerenciando instituições e alunos</h2><br/>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<div class="carousel-inner">
+
+				<div class="item">
+					<img src="https://images.freeimages.com/images/large-previews/f13/leather-chair-1465805.jpg" alt="Instituicao" style="width: 100%;"/>
+					<div class="carousel-caption">
+						<h3>Instituições</h3>
+						<p>Nomes, endereços e mais!</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="https://images.freeimages.com/images/large-previews/180/school-desks-1418686.jpg" alt="Escola" style="width: 100%;"/>
+					<div class="carousel-caption">
+						<h3>Estudantes</h3>
+						<p>Insira, Edite e mais!</p>
+					</div>
+				</div>
+
+				<div class="item active">
+					<img src="https://images.freeimages.com/images/large-previews/647/the-old-school-1548001.jpg" alt="Springboot" style="width: 100%;"/>
+					<div class="carousel-caption">
+						<h3>DaniloJSouza</h3>
+						<p>Spring-Boot!</p>
+					</div>
+				</div>
+
+			</div>
+
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span> <span
+				class="sr-only">Anterior</span>
+			</a> <a class="right carousel-control" href="#myCarousel"
+				data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right"></span> <span
+				class="sr-only">Próximo</span>
+			</a>
+		</div>
+	</div>
+	<div th:replace="fragmentos/fragmentos :: footer"></div>
+</body>
+</html>

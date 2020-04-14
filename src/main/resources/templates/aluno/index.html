@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org" lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de Alunos</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos::header"></div>
+	<div class="container">
+		<h2>Lista de Alunos</h2>
+		<a href="/alunos/inserir" class="btn btn-default">Inserir Aluno</a>
+		<div class="row">
+			<div class="form-group col-md-12">
+				<br/><label>Aluno a ser pesquisado:</label>
+				<input type="text" id="txt-pesquisa-aluno" class="form-control"/><br/>
+				<button type="button" class="btn btn-default" id="btn-pesquisa-aluno"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+			</div>
+		</div>
+		<table class="table" id="tbl-alunos">
+			<thead>
+				<th>Nome do Aluno</th>
+				<th>Idade</th>
+				<th>Instituição</th>
+				<th>Ações</th>
+			</thead>
+			<tbody>
+				<tr th:each="aluno: ${alunos}">
+					<td th:text="${aluno.nome}"></td>
+					<td th:text="${aluno.idade}"></td>
+					<td th:text="${aluno.instituicao.nome}"></td>
+					<td><a
+						th:href="@{/alunos/editar/{id}(id=${aluno.id})}">Editar</a>
+						| <a th:href="@{/alunos/excluir/{id}(id=${aluno.id})}">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:replace="fragmentos/fragmentos::footer"></div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btn-pesquisa-aluno').click(function(){
+				$.ajax({
+					method:'GET',
+					url:'/alunos/pesquisarPorNome/' + $('#txt-pesquisa-aluno').val(),
+					success:function(data) {
+						$('#tbl-alunos tbody > tr').remove();
+						$.each(data, function(){
+							$('#tbl-alunos tbody').append(
+								'<tr>' +
+								'	<td>' + this.nome +'</td>' +
+								'	<td>' + this.idade +'</td>' +
+								'	<td>' + this.instituicao.nome +'</td>' +
+								'	<td>' + 
+								'		<a href="/alunos/editar/' + this.id + '">Editar</a> | '+
+								'		<a href="/alunos/excluir/' + this.id + '">Excluir</a>'+
+								'	</td>' +
+								'</tr>' 		
+							);
+						});
+					},
+					error: function(){
+						alert('Não foi possível realizar esta pesquisa.');
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
