@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org" lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de Instituições</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos::header"></div>
+	<div class="container">
+		<h2>Lista de Instituições</h2>
+		<a href="/instituicoes/inserir" class="btn btn-default">Inserir Instituição</a>
+		<div class="row">
+			<div class="form-group col-md-12">
+				<br/><label>Instituição a ser pesquisada:</label>
+				<input type="text" id="txt-pesquisa-instituicao" class="form-control"/><br/>
+				<button type="button" class="btn btn-default" id="btn-pesquisa-instituicao"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+			</div>
+		</div>
+		<table class="table" id="tbl-instituicoes">
+			<thead>
+				<th>Nome da Instituição</th>
+				<th>Endereço</th>
+				<th>Ações</th>
+			</thead>
+			<tbody>
+				<tr th:each="instituicao: ${instituicoes}">
+					<td th:text="${instituicao.nome}"></td>
+					<td th:text="${instituicao.endereco}"></td>
+					<td><a
+						th:href="@{/instituicoes/editar/{id}(id=${instituicao.id})}">Editar</a>
+						| <a th:href="@{/instituicoes/excluir/{id}(id=${instituicao.id})}">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:replace="fragmentos/fragmentos::footer"></div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btn-pesquisa-instituicao').click(function(){
+				$.ajax({ 
+					method:'GET',
+					url:'/instituicoes/pesquisarPorNome/' + $('#txt-pesquisa-instituicao').val(),
+					success:function(data){
+						$('#tbl-instituicoes tbody > tr').remove();
+						$.each(data, function(){
+							$('#tbl-instituicoes tbody').append(
+								'<tr>' +
+								'	<td>' + this.nome +'</td>' +
+								'	<td>' + this.endereco +'</td>' +
+								'	<td>' + 
+								'		<a href="/instituicoes/editar/' + this.id + '">Editar</a> | '+
+								'		<a href="/instituicoes/excluir/' + this.id + '">Excluir</a>'+
+								'	</td>' +
+								'</tr>' 
+							);
+						});
+					},
+					error: function(){
+						alert('Não foi possível realizar esta pesquisa.');
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

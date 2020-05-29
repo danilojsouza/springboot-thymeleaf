@@ -48,14 +48,14 @@ public class AlunoController {
 	}
 	
 	@GetMapping("/editar/{id}")
-	public ModelAndView editar(@PathVariable Long id) {
+	public ModelAndView editar(@PathVariable Long id){
 		ModelAndView resultado = new ModelAndView("aluno/editar");
 		resultado.addObject("aluno", repositorioAluno.getOne(id));
 		resultado.addObject("instituicoes", repositorioInstituicao.findAll());
 		return resultado;
 	}
 	
-	@PostMapping("/editar")
+	@GetMapping("/editar")
 	public String editar(Aluno aluno){
 		repositorioAluno.save(aluno);
 		return "redirect:/alunos/index";
@@ -63,7 +63,7 @@ public class AlunoController {
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable Long id) {
-		repositorioAluno.delete(id);
+		repositorioAluno.deleteById(id);
 		return "redirect:/alunos/index";
 	}
 	

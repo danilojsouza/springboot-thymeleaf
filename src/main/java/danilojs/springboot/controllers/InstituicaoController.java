@@ -55,7 +55,7 @@ public class InstituicaoController {
 	
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable Long id) {
-		repositorioInstituicao.delete(id);
+		repositorioInstituicao.deleteById(id);
 		return "redirect:/instituicoes/index";
 	}
 	

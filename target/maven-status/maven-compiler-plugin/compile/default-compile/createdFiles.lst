@@ -1,0 +1,8 @@
+danilojs\springboot\entities\Instituicao.class
+danilojs\springboot\Application.class
+danilojs\springboot\controllers\InstituicaoController.class
+danilojs\springboot\security\SegurancaConfig.class
+danilojs\springboot\entities\Aluno.class
+danilojs\springboot\controllers\AlunoController.class
+danilojs\springboot\repository\RepositorioInstituicao.class
+danilojs\springboot\repository\RepositorioAluno.class

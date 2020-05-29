@@ -15,6 +15,11 @@ public class Application {
 		return "index";
 	}
 	
+	@RequestMapping("/login")
+	public String login(Model model) {
+		return "login";
+	}
+	
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
 	}
