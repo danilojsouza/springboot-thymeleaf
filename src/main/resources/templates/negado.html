@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+	<meta charset="UTF-8" />
+	<title>Acesso negado!</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<style>body {background-color: #666666; color: white;} h3 {padding-top: 15px;} hr{margin: 50px;} .card{background-color: #898989; padding: 10px; border-style: groove;}</style>
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos :: header"></div>
+	<h3 align="center">Para ter acesso a página, fale com o administrador!</h3> <hr/>
+	<div class="container">
+    <div style="width:600px;margin-left: auto;margin-right: auto;padding: 0px 24px 0px 24px;">
+        <div class="card">
+            <div class="card-header" style="padding: 0px 0px 0px 85px;">
+                <b>Você não possui autorização para acessar esta página!</b>
+            </div>
+            <div class="card-block" style="padding: 17px 24px 5px 24px;">
+            <img src="https://azetech.com.br/gallery_gen/caaf65a3169355b55e887afe204ff864.png" alt="AcessoNegado" width="100%"/>
+            </div>
+        </div>
+    </div>
+</div> <hr/>
+	<div th:replace="fragmentos/fragmentos :: footer"></div>
+</body>
+</html>

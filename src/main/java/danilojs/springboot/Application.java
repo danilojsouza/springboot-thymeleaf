@@ -15,6 +15,11 @@ public class Application {
 		return "index";
 	}
 	
+	@RequestMapping("/negado")
+	public String negado(Model model) {
+		return "negado";
+	}
+	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		return "login";

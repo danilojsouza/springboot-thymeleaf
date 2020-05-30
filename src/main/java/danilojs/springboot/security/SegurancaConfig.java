@@ -25,10 +25,15 @@ public class SegurancaConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable();
 		http.authorizeRequests()
-		.antMatchers("/").permitAll()
-		.antMatchers("/instituicoes/**").authenticated()
-		.antMatchers("/alunos/**").authenticated()
+		.antMatchers("/", "/alunos*", "/instituicoes*").permitAll()
+		.antMatchers("/instituicoes/**").hasRole("ADMIN")
+		.antMatchers("/alunos/**").hasAnyRole("GERENTE, ADMIN")
+		.anyRequest().permitAll()
+		.and()
+        .exceptionHandling()
+        .accessDeniedPage("/negado")
 		.and()
 		.formLogin()
 		.loginPage("/login")

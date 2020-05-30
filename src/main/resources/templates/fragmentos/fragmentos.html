@@ -6,16 +6,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-  .btn{
-  	background-color: black;
-  }
-  </style>
 </head>
 <body>
 	<!-- HEADER/CABEÇALHO -->
-	<nav class="navbar navbar-inverse navbar-static-top"
-		th:fragment="header">
+	<nav class="navbar navbar-inverse navbar-static-top" th:fragment="header">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -25,11 +19,11 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">DaniloJSouza</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">			
-				<ul class="nav navbar-nav ml-auto">
-					<li class="active"><a href="/">Início</a></li>
+			</div>	
+			<div class="collapse navbar-collapse" id="myNavbar">
+			<a class="nav navbar-nav" href="/"><img src="https://i.imgur.com/BP8Boz5.png" width="30%" height="100%" alt="GIA" style="margin-left: 30px; margin-top: 2px; padding: 3px"/></a>			
+				<ul class="nav navbar-nav" style="font-size: 18px; margin-top: 5px;">
+					<li><a href="/">Início</a></li>
 					<li><a href="/instituicoes/index">Instituições</a></li>
 					<li><a href="/alunos/index">Alunos</a></li>
 					<li><a href="/logout" sec:authorize="isAuthenticated()">Sair</a></li>
@@ -39,7 +33,7 @@
 	</nav>
 
 	<!-- FOOTER -->
-	<div th:fragment="footer" style="text-align: center; margin: 10px;">
+	<div th:fragment="footer" style="text-align: center; margin-top: 5px;">
 		&copy; 2020 DaniloJSouza
 	</div>
 </body>

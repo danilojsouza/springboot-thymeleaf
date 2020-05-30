@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,6 @@ import danilojs.springboot.repository.RepositorioAluno;
 import danilojs.springboot.repository.RepositorioInstituicao;
 
 @Controller
-@RequestMapping("/alunos")
 public class AlunoController {
 
 	@Autowired
@@ -24,14 +24,19 @@ public class AlunoController {
 	@Autowired
 	private RepositorioInstituicao repositorioInstituicao;
 	
-	@GetMapping("/index")
+	@RequestMapping("/alunos")
+	public String index(Model model) {
+		return "index";
+	}
+	
+	@GetMapping("alunos/index")
 	public ModelAndView index() {
 		ModelAndView resultado = new ModelAndView("aluno/index");
 		resultado.addObject("alunos", repositorioAluno.findAll());
 		return resultado;
 	}
 	
-	@GetMapping("/inserir")
+	@GetMapping("alunos/inserir")
 	public ModelAndView inserir() {
 		ModelAndView resultado = new ModelAndView("aluno/inserir");
 		Aluno aluno = new Aluno();
@@ -41,13 +46,13 @@ public class AlunoController {
 		return resultado;
 	}
 	
-	@PostMapping("/inserir")
+	@PostMapping("alunos/inserir")
 	public String inserir(Aluno aluno) {
 		repositorioAluno.save(aluno);
 		return "redirect:/alunos/index";
 	}
 	
-	@GetMapping("/editar/{id}")
+	@GetMapping("alunos/editar/{id}")
 	public ModelAndView editar(@PathVariable Long id){
 		ModelAndView resultado = new ModelAndView("aluno/editar");
 		resultado.addObject("aluno", repositorioAluno.getOne(id));
@@ -55,20 +60,20 @@ public class AlunoController {
 		return resultado;
 	}
 	
-	@GetMapping("/editar")
+	@GetMapping("alunos/editar")
 	public String editar(Aluno aluno){
 		repositorioAluno.save(aluno);
 		return "redirect:/alunos/index";
 	}
 	
-	@GetMapping("/excluir/{id}")
+	@GetMapping("alunos/excluir/{id}")
 	public String excluir(@PathVariable Long id) {
 		repositorioAluno.deleteById(id);
 		return "redirect:/alunos/index";
 	}
 	
 	//AJAX
-	@GetMapping({"/pesquisarPorNome/{nome}", "/pesquisarPorNome"})
+	@GetMapping({"alunos/pesquisarPorNome/{nome}", "/pesquisarPorNome"})
 	public @ResponseBody List<Aluno> pesquisarPorNome(@PathVariable Optional<String> nome){
 		if(nome.isPresent())
 			return repositorioAluno.findByNomeContaining(nome.get());

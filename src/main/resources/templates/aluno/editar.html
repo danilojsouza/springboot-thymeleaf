@@ -15,7 +15,7 @@
 	<div th:replace="fragmentos/fragmentos::header"></div>
 	<div class="container">
 		<h2>Editação de Aluno</h2>
-		<form class="form-horizontal" action="/alunos/editar" method="GET" th:object="${aluno}">
+		<form class="form-vertical" action="/alunos/editar" method="GET" th:object="${aluno}">
 			<input type="hidden" th:field="*{id}"/>
 			<div class="row">
 				<div class="form-group col-md-6">
@@ -26,7 +26,7 @@
 			<div class="row">
 				<div class="form-group col-md-6">
 					<label for="txt-idade">Idade do Aluno</label>
-					<input type="text" class="form-control" id="txt-idade" th:field="*{idade}" />
+					<input type="text" min="10" max="100" class="form-control" id="txt-idade" th:field="*{idade}" />
 				</div>
 			</div>
 			<div class="row">
