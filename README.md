@@ -12,3 +12,5 @@
 
 ## Login do Gerente
 * gerente : 123
+
+#### Switch DataBase in application.propeties
