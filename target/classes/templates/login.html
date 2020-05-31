@@ -7,7 +7,7 @@
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  	<style>body {background-color: #666666; color: white;} h3 {padding-top: 15px;} hr{margin: 50px;} .card{background-color: #898989; padding: 10px; border-style: groove;}</style>
+  	<style>body, html {color: white;height: 100%;background-repeat: no-repeat;background-image: linear-gradient(to bottom right, #67739c, #adadad);}h2 {padding-top: 15px;}	h3 {padding-top: 15px;} hr{margin: 50px;} .card{padding: 10px;}</style>
 </head>
 <body>
 	<div th:replace="fragmentos/fragmentos :: header"></div>
@@ -16,7 +16,7 @@
     <div style="width:600px;margin-left: auto;margin-right: auto;padding: 0px 24px 0px 24px;">
         <div class="card">
             <div class="card-header" style="padding: 0px 0px 0px 24px;">
-                Faça seu login para acessar as instituições e os alunos.
+                Faça seu login para acessar as instituições e/os alunos.
             </div>
             <div class="card-block" style="padding: 17px 24px 5px 24px;">
                 <form name="f" th:action="@{/login}" method="post">
@@ -24,23 +24,17 @@
                         <div th:if="${param.error}" class="alert alert-danger">
                             Usuário e/ou senha inválida.
                         </div>
-
                         <div th:if="${param.logout}" class="alert alert-success">
                             Você saiu do sistema.
                         </div>
-
                         <div class="form-group">
                             <label for="usuario">Usuário</label>
-                            <input type="text" class="form-control" id="txtUsername" name="usuario"
-                                   placeholder="Seu usuário" required/>
+                            <input type="text" class="form-control" id="txtUsername" name="usuario" placeholder="Seu usuário" required/>
                         </div>
-
                         <div class="form-group">
                             <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="txtPassword" name="senha"
-                                   placeholder="Sua senha" required/>
+                            <input type="password" class="form-control" id="txtPassword" name="senha" placeholder="Sua senha" required/>
                         </div>
-
                         <div class="form-actions">
                             <button type="submit" class="btn btn-success">Entrar</button>
                         </div>

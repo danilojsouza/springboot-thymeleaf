@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<title>Editar Instituição</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous" />
-	<style>
-  	body {background-color: #666666; color: white;}
-  </style>
+	<meta charset="UTF-8" />
+	<title>Editar Instituição</title>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<style>body, html {color: white;height: 100%;background-repeat: no-repeat;background-image: linear-gradient(to bottom right, #67739c, #adadad);}hr{margin: 35px 50px 35px 50px;}</style>
 </head>
 <body>
 	<div th:replace="fragmentos/fragmentos::header"></div>
-
 	<div class="container">
 		<h2>Editar instituição</h2>
 		<form class="form-vertical" action="/instituicoes/editar"
@@ -21,22 +16,19 @@
 			<input type="hidden" th:field="*{id}"/>
 			<div class="row">
 				<div class="form-group col-md-6">
-					<label for="txt-nome">Nome da instituição</label> <input
-						type="text" class="form-control" id="txt-nome" th:field="*{nome}" />
+					<label for="txt-nome">Nome da instituição</label>
+					<input	type="text" class="form-control" id="txt-nome" th:field="*{nome}" required/>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-6">
-					<label for="txt-endereco">Endereço da instituição</label> <input
-						type="text" class="form-control" id="txt-endereco"
-						th:field="*{endereco}" />
+					<label for="txt-endereco">Endereço da instituição</label>
+					<input	type="text" class="form-control" id="txt-endereco"	th:field="*{endereco}" required/>
 				</div>
 			</div>
-			<input type="submit" class="btn btn-default" value="Inserir" />
+			<input type="submit" class="btn btn-default" value="Editar" />
 		</form>
-	</div>
+	</div><hr/>
 	<div th:replace="fragmentos/fragmentos::footer"></div>
-	<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>
