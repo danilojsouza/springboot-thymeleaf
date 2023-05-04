@@ -2,7 +2,7 @@
 #### Maven/WEB/SpringBoot com Thymeleaf
 #### JPA - Hibernate - MySQL e PostgreSQL
 #### Bootstrap e JQuery
-#### [Aplicação no Heroku Cloud](https://gia-ucb.herokuapp.com/)
+#### [~~Aplicação atualmente inativa no Heroku Cloud~~](https://gia-ucb.herokuapp.com/)
 
 ## Features
 * CRUD Instituições
